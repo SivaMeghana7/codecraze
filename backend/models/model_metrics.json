@@ -1,0 +1,58 @@
+{
+  "dataset": {
+    "total_samples": 1500,
+    "train_samples": 1200,
+    "test_samples": 300,
+    "feature_count": 10,
+    "data_source": "Synthetic benchmark cohort calibrated on engineering campus distributions"
+  },
+  "academic_risk_classifier": {
+    "algorithm": "XGBoost (XGBClassifier)",
+    "hyperparameters": {
+      "n_estimators": 100,
+      "max_depth": 4,
+      "learning_rate": 0.08,
+      "subsample": 0.85
+    },
+    "test_metrics": {
+      "accuracy": 0.9067,
+      "precision": 0.9618,
+      "recall": 0.8456,
+      "f1": 0.9,
+      "roc_auc": 0.9612
+    }
+  },
+  "placement_risk_classifier": {
+    "algorithm": "XGBoost (XGBClassifier)",
+    "hyperparameters": {
+      "n_estimators": 100,
+      "max_depth": 4,
+      "learning_rate": 0.08,
+      "subsample": 0.85
+    },
+    "test_metrics": {
+      "accuracy": 0.7433,
+      "precision": 0.7701,
+      "recall": 0.7836,
+      "f1": 0.7768,
+      "roc_auc": 0.8026
+    }
+  },
+  "clustering_segmentation": {
+    "algorithm": "K-Means (k=4)",
+    "features": [
+      "cgpa",
+      "backlogs",
+      "attendance_pct",
+      "coding_score",
+      "internal_exam_avg"
+    ],
+    "cluster_to_persona_map": {
+      "1": 0,
+      "3": 1,
+      "2": 2,
+      "0": 3
+    }
+  },
+  "disclaimer": "Metrics evaluated on holdout synthetic benchmark test set (N=300). Real-world campus deployment will require continuous retraining on live institutional data."
+}
