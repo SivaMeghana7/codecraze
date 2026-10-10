@@ -51,7 +51,9 @@ async def add_process_time_header(request: Request, call_next):
 
 # Mount API Routers
 app.include_router(api_router, prefix=settings.API_V1_PREFIX)
-
+print("REGISTERED ROUTES:")
+for route in app.routes:
+    print(getattr(route, "methods", None), getattr(route, "path", None))
 @app.get("/health", response_model=ApiResponse[HealthResponse], tags=["Health"])
 def health_check():
     """Global system health probe and ML readiness check."""
